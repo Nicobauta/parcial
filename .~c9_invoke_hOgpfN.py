@@ -1,7 +1,7 @@
 import boto3
 import datetime
 import pytest
-from moto import mock_s3
+from unittest.mock import MagicMock
 from parser import procesar_archivos
 
 dest_bucket = "casasprueba"
@@ -46,10 +46,10 @@ def decode_chunked(chunked_str: str) -> str:
         i += 2
     return "".join(chunks).strip()
 
-def test_procesar_archivos(s3_mock, monkeypatch):
+def test_procesar_archivos(s3_mock, mocker):
     """Verifica que procesar_archivos extrae datos y sube el CSV correctamente."""
     
-    monkeypatch.setattr("parser.s3_client", s3_mock)
+    mocker.patch("parser.s3_client", s3_mock)
     filename = "test_output.csv"
     procesar_archivos(html_test, filename)
     

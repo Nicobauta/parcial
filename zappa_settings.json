@@ -12,7 +12,7 @@
         "profile_name": "default",
         "project_name": "parcial2",
         "runtime": "python3.10",
-        "s3_bucket": "parcialconexion2",
+        "s3_bucket": "parcialconexion",
         "keep_warm": false,
         "apigateway_enabled": false,
         "manage_roles": false,
@@ -34,7 +34,7 @@
         "events": [
             {
                 "event_source": {
-                    "arn": "arn:aws:s3:::parcialconexion2",
+                    "arn": "arn:aws:s3:::parcialconexion",
                     "events": [
                         "s3:ObjectCreated:*"
                     ]
@@ -42,7 +42,7 @@
                 "function": "punto2.lambda_handler"
             }
         ],
-        "s3_bucket": "parcialconexion2",
+        "s3_bucket": "parcialconexion",
         "keep_warm": false,
         "apigateway_enabled": false,
         "manage_roles": false,

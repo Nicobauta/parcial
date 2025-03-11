@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/parcial2/env/bin/python
+#!/home/ubuntu/environment/parcial2/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
