@@ -1,11 +1,12 @@
 import boto3
 import datetime
 import json
+import codecs
 from bs4 import BeautifulSoup
 
 # Configuración de S3
-BUCKET_NAME_ORIGEN = "parcialconexion"
-BUCKET_NAME_DESTINO = "casasprueba"
+BUCKET_NAME_ORIGEN = "parcialconexion2"
+BUCKET_NAME_DESTINO = "casasprueba2"
 s3_client = boto3.client("s3")
 
 def procesar_archivos():
@@ -107,11 +108,12 @@ def procesar_archivos():
     if propiedades:
         csv_content = "FechaDescarga,Barrio,Valor,NumHabitaciones,NumBanos,mts2\n"
         csv_content += "\n".join(",".join(map(str, row)) for row in propiedades)
+        csv_bytes = codecs.BOM_UTF8 + csv_content.encode("utf-8")
 
         s3_client.put_object(
             Bucket=BUCKET_NAME_DESTINO,
             Key=output_csv_path,
-            Body=csv_content.encode("utf-8"),
+            Body=csv_bytes,
             ContentType="text/csv"
         )
         print(f"📂 Archivo CSV guardado en {BUCKET_NAME_DESTINO}/{output_csv_path}")

@@ -4,7 +4,7 @@ import datetime
 from bs4 import BeautifulSoup
 
 # Configuración de AWS S3
-BUCKET_NAME = "parcialconexion"
+BUCKET_NAME = "parcialconexion2"
 s3_client = boto3.client("s3")
 
 # URL base para descargar las páginas de resultados
