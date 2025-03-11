@@ -45,7 +45,7 @@ def procesar_archivos():
 
             for listing in listings:
                 try:
-                    barrio = listing.find("div", class_="listing-card_location_geo")
+                    barrio = listing.find("div", class_="listing-card__location__geo")
                     valor = listing.find("span", class_="price__actual")
                     num_habitaciones = listing.find("p", attrs={"data-test": lambda x: x and "bedrooms" in x})
                     num_banos = listing.find("p", attrs={"data-test": lambda x: x and "bathrooms" in x})
